@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+
+  {{cookiecutter.project_slug}}:
+    image: {{cookiecutter.project_slug}}:{{cookiecutter.version}}
+    ports:
+      - 5000:5000
+    env_file: docker-env
+    volumes:
+      - ./{{cookiecutter.project_slug}}:/usr/src/app
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100M"
+        max-file: "3"
+
+    networks:
+      - back-tier
+
+  redis:
+    image: redis:alpine
+    restart: always
+    networks:
+      - back-tier
+
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    env_file: docker-env
+    ports:
+      - 3309:3306
+    volumes:
+      - "./mysql-data:/var/lib/mysql"
+    networks:
+      - back-tier
+
+networks:
+    back-tier:

@@ -1,0 +1,9 @@
+CELERY_BROKER_URL=redis://redis:6379
+CELERY_RESULT_BACKEND=redis://redis:6379
+
+DB_HOST=mysql
+DB_PORT=3306
+DB_USER=root
+DB_PASS=12345678
+DB_NAME=sample
+

@@ -1,7 +1,18 @@
+import datetime
+
 from app import db
 
 
-class User(db.Model):
+class TimeStampedModelMixin:
+    """
+     An Mixin base class model that provides self-updating
+    ``created_at`` and ``modified_at`` fields.
+    """
+    created_at = Column(db.DateTime(), default=datetime.datetime.now)
+    modified_at = Column(db.DateTime(), default=datetime.datetime.now, onupdate=datetime.datetime.now)
+
+
+class User(db.Model, TimeStampedModelMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)

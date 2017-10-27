@@ -1,0 +1,2 @@
+# cookiecutter-flask-restful
+

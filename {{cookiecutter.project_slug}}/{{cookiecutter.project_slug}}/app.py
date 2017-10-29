@@ -8,14 +8,18 @@ from flask import got_request_exception
 from base.utils import get_client_ip
 from flask_sqlalchemy import SQLAlchemy
 
-dictConfig(LOGGING)
-request_logger = logging.getLogger("api.request")
-
 app = Flask("{{cookiecutter.project_slug}}")
 app.config.from_pyfile('configs/config.py')
 
+# Trick: call app.logger before config app.logger by dictConfig.
+app.logger.info("Init flask app ...")
+dictConfig(LOGGING)
+request_logger = logging.getLogger("api.request")
+
+# Init db
 db = SQLAlchemy(app)
 
+# Init API
 from api import api_bp
 app.register_blueprint(api_bp)
 

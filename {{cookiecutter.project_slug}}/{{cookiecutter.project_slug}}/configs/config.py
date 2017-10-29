@@ -19,6 +19,7 @@ CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND', 'redis://localhost:6378')
 
 # LOGGING CONFIG
 # ----------------------------------------------------------
+LOGGER_NAME = '{{cookiecutter.project_slug}}'
 SLACK_API_KEY = env('SLACK_API_KEY', "xoxp-251214099845-251214099845-251214099845-251214099845251214099845")
 DEBUG = False
 LOG_FILE = "logs/api.ERROR.log"
@@ -39,6 +40,14 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'verbose'
         },
+        'app-file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': 'logs/app.log',
+            'maxBytes': 100 * 1024 * 1024,  # 100Mb
+            'backupCount': 3,
+        },
         'request-file': {
             'level': 'DEBUG',
             'class': 'logging.handlers.TimedRotatingFileHandler',
@@ -54,7 +63,7 @@ LOGGING = {
             'username': 'PF Push notification API Error',
             'api_key': SLACK_API_KEY,
             'class': 'slacker_log_handler.SlackerLogHandler',
-            'channel': '#plusfun-push-notif'
+            'channel': '#api-error'
         },
     },
     'loggers': {
@@ -65,6 +74,11 @@ LOGGING = {
         },
         'api.request': {
             'handlers': ['request-file', 'slack-error'],
+            'propagate': False,
+            'level': 'INFO',
+        },
+        '{{cookiecutter.project_slug}}': {
+            'handlers': ['app-file'],
             'propagate': False,
             'level': 'INFO',
         },

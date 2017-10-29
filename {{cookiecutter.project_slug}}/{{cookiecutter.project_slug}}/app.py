@@ -1,5 +1,4 @@
-from flask import Flask, Blueprint
-from flask_restful import Api
+from flask import Flask
 import logging
 from time import time
 from flask import request
@@ -17,14 +16,7 @@ app.config.from_pyfile('configs/config.py')
 
 db = SQLAlchemy(app)
 
-api_bp = Blueprint('api', __name__, url_prefix='/v1')
-api = Api(api_bp)
-
-# Routers
-from resources.user import UserResource
-
-api.add_resource(UserResource, '/users')
-
+from api import api_bp
 app.register_blueprint(api_bp)
 
 # Custom CLI

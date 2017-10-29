@@ -13,7 +13,7 @@ restart:
 	docker-compose restart {{cookiecutter.project_slug}}
 
 run:
-	cd {{cookiecutter.project_slug}} && export PYTHONPATH=`pwd` && FLASK_APP=app && flask run
+	cd {{cookiecutter.project_slug}} && export PYTHONPATH=`pwd` && export FLASK_APP=app && flask run
 
 init-db:
 	cd {{cookiecutter.project_slug}} && export PYTHONPATH=`pwd` && FLASK_APP=app && flask initdb

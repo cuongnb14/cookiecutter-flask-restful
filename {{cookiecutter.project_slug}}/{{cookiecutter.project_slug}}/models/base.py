@@ -8,8 +8,8 @@ class TimeStampedModelMixin:
      An Mixin base class model that provides self-updating
     ``created_at`` and ``modified_at`` fields.
     """
-    created_at = Column(db.DateTime(), default=datetime.datetime.now)
-    modified_at = Column(db.DateTime(), default=datetime.datetime.now, onupdate=datetime.datetime.now)
+    created_at = db.Column(db.DateTime(), default=datetime.datetime.now)
+    modified_at = db.Column(db.DateTime(), default=datetime.datetime.now, onupdate=datetime.datetime.now)
 
 
 class User(db.Model, TimeStampedModelMixin):

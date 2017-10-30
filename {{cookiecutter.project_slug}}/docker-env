@@ -5,5 +5,9 @@ DB_HOST=mysql
 DB_PORT=3306
 DB_USER=root
 DB_PASS=12345678
-DB_NAME=sample
+DB_NAME={{cookiecutter.project_slug}}
 
+# MYSQL
+MYSQL_ROOT_PASSWORD=12345678
+MYSQL_DATABASE={{cookiecutter.project_slug}}
+MYSQL_CHARSET=utf-8

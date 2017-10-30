@@ -5,10 +5,10 @@ env = os.getenv
 # MYSQL DATABASE CONFIG
 # ----------------------------------------------------------
 DB_HOST = env('DB_HOST', '127.0.0.1')
-DB_PORT = env('DB_PORT', '3306')
+DB_PORT = env('DB_PORT', '3309')
 DB_USER = env('DB_USER', 'root')
-DB_PASS = env('DB_PASS', 'password')
-DB_NAME = env('DB_NAME', 'db_name')
+DB_PASS = env('DB_PASS', '123456')
+DB_NAME = env('DB_NAME', '{{cookiecutter.project_slug}}')
 
 SQLALCHEMY_DATABASE_URI = "mysql://{}:{}@{}:{}/{}".format(DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME)
 
@@ -78,7 +78,7 @@ LOGGING = {
             'level': 'INFO',
         },
         '{{cookiecutter.project_slug}}': {
-            'handlers': ['app-file'],
+            'handlers': ['app-file', 'console'],
             'propagate': False,
             'level': 'INFO',
         },

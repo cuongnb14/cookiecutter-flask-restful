@@ -10,3 +10,17 @@ def get_client_ip(request):
     else:
         ip = request.remote_addr
     return ip
+
+
+def ok(data, paginator=None):
+    result = {
+        "status": "OK",
+        "result": data,
+    }
+    if paginator:
+        result["paginator"] = {
+            "total": paginator.total,
+            "offset": paginator.offset,
+            "limit": paginator.limit,
+        }
+    return result

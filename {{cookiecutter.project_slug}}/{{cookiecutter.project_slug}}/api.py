@@ -7,3 +7,7 @@ api = Api(api_bp)
 
 # Routers
 api.add_resource(UserResource, '/users')
+
+
+def register_api(app):
+    app.register_blueprint(api_bp)

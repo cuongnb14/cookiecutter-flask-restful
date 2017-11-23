@@ -1,34 +1,27 @@
-from flask import Flask
 import logging
-from configs.config import LOGGING
 from logging.config import dictConfig
+from flask import Flask
 from flask import got_request_exception
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask("{{cookiecutter.project_slug}}")
-app.config.from_pyfile('configs/config.py')
+from configs.config import LOGGING
+from api import register_api
+from cli import register_cli
+from middlewares import request_logging
 
 # Trick: call app.logger before config app.logger by dictConfig.
 app.logger.info("Init flask app ...")
 dictConfig(LOGGING)
 request_logger = logging.getLogger("api.request")
 
-# Init db
-db = SQLAlchemy(app)
 
 # Init API
-from api import api_bp
-
-app.register_blueprint(api_bp)
+register_api(app)
 
 # Register custom CLI
-from cli import register_cli
-
 register_cli(app)
 
 # Register middleware
-from middlewares import request_logging
-
 request_logging.register_middleware(app)
 
 

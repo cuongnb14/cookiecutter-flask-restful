@@ -27,5 +27,6 @@ def unexpected_error(func):
 @celery.task(rate_limit="50/m")
 @unexpected_error
 def send_message(content, device_ids=None, platforms=None, silent=False, data=None):
+    """Example long task"""
     slack_error_logger.send_message(content=content, device_ids=device_ids, platforms=platforms, silent=silent, data=data)
 

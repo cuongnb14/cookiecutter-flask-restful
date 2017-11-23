@@ -1,6 +1,29 @@
 # cookiecutter-flask-restful
 
-In development ...
+Cookiecutter Flask-RESTful is a framework for jumpstarting production-ready Flask-RESTful projects quickly.
+
+## Introduction
+This cookie cutter is a very simple boilerplate for starting a REST api using Flask, Flask-RESTful, Celery. It comes with basic project structure and configuration, celery task.
+
+**Features:**
+
+- Simple flask-RESTful application
+- Flask command line interface integration
+- Implementation simple cli: init database, list all router
+- Integrate celery for handle long process
+- Simple pagination utils  
+- Configuration using environment variable
+- Dockerizer
+- Use Makefile to install
+
+**Used packages:**
+- [Flask](http://flask.pocoo.org/)
+- [Flask-RESTful](https://flask-restful.readthedocs.io/en/latest/)
+- [mysqlclient](https://github.com/PyMySQL/mysqlclient-python)
+- [Flask-SQLAlchemy](http://flask-sqlalchemy.pocoo.org/2.3/)
+- [Celery](http://www.celeryproject.org/)
+- [gunicorn](http://gunicorn.org/)
+
 
 ## Usage
 
@@ -12,14 +35,22 @@ Step 2: Install requirements
 
 `make install-requirements`
 
-Step 3: Run mysql container
+Step 3: Build docker images
+
+`make build`
+
+Step 4: Run mysql container
 
 `docker-compose up -d mysql`
 
-Step 4: Init database schema
+Step 5: Init database schema
 
 `make init-db`
 
-Step 5: Run project without docker
+Step 6: Run project
 
-`make run`
+    - Without docker: `make run`
+    
+    - With docker: `make up`
+    
+ 

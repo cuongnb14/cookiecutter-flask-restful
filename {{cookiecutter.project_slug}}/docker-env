@@ -10,4 +10,3 @@ DB_NAME={{cookiecutter.project_slug}}
 # MYSQL
 MYSQL_ROOT_PASSWORD=123456
 MYSQL_DATABASE={{cookiecutter.project_slug}}
-MYSQL_CHARSET=utf-8

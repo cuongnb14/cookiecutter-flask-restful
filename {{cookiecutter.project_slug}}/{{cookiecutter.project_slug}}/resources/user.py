@@ -3,6 +3,7 @@ from flask_restful import reqparse
 from models.base import User
 from base.paginator import Paginator
 from base.utils import ok
+from tasks.celery import add_user
 
 page_parser = reqparse.RequestParser()
 page_parser.add_argument('offset', type=str, required=False, help='{error_msg}')
@@ -28,8 +29,19 @@ class UserResource(Resource):
 
     def post(self):
         args = user_parser.parse_args()
+        username = args.get("username")
+        email = args.get("email")
+
+        add_user.delay(username, email)
+        # user = User(username=username, email=email)
+        # db.session.add(user)
+        # db.session.commit()
         return {"status": "OK", "message": str(args)}
 
-    def delete(self):
-        args = user_parser.parse_args()
-        return {"status": "OK", "message": args}
+
+class UserDetailResource(Resource):
+    def delete(self, user_id):
+        user = User.query.get(user_id)
+        db.session.delete(user)
+        db.session.commit()
+        return {"status": "OK", "message": user_id}

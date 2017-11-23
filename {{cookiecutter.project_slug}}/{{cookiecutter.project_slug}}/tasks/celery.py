@@ -30,3 +30,9 @@ def send_message(content, device_ids=None, platforms=None, silent=False, data=No
     """Example long task"""
     slack_error_logger.send_message(content=content, device_ids=device_ids, platforms=platforms, silent=silent, data=data)
 
+
+@celery.task()
+def add_user(username, email):
+    user = User(username=username, email=email)
+    db.session.add(user)
+    db.session.commit()

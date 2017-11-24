@@ -1,6 +1,6 @@
 import datetime
 
-from app import db
+from factory import db
 
 
 class TimeStampedModelMixin:

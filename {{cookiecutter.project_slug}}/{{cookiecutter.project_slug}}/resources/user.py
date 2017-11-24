@@ -32,7 +32,11 @@ class UserResource(Resource):
         username = args.get("username")
         email = args.get("email")
 
+        # TODO: Sample use celery task
+        # Add user by celery task
         add_user.delay(username, email)
+
+        # Or add user like normal
         # user = User(username=username, email=email)
         # db.session.add(user)
         # db.session.commit()
@@ -44,4 +48,4 @@ class UserDetailResource(Resource):
         user = User.query.get(user_id)
         db.session.delete(user)
         db.session.commit()
-        return {"status": "OK", "message": user_id}
+        return {"status": "OK", "message": "Deleted user id: " + user_id}

@@ -1,15 +1,17 @@
-# cookiecutter-flask-restful
+# Cookiecutter Flask-RESTful
 
-Cookiecutter Flask-RESTful is a framework for jumpstarting production-ready Flask-RESTful projects quickly.
+Powered by [Cookiecutter](https://github.com/audreyr/cookiecutter). Cookiecutter Flask-RESTful is a framework for jumpstarting production-ready Flask-RESTful projects quickly.
 
 ## Introduction
 This cookie cutter is a very simple boilerplate for starting a REST api using Flask, Flask-RESTful, Celery. It comes with basic project structure and configuration, celery task.
 
 **Features:**
-
+- For Flask 0.12.2 and Flask RESTful 0.3.6 
 - Simple flask-RESTful application
 - Flask command line interface integration
 - Implementation simple cli: init database, list all router
+- Implementation simple middleware
+- Configured logging (integrate notify to slack)
 - Integrate celery for handle long process
 - Simple pagination utils  
 - Configuration using environment variable
@@ -49,8 +51,8 @@ Step 5: Init database schema
 
 Step 6: Run project
 
-    - Without docker: `make run`
+- Without docker: `make run`
     
-    - With docker: `make up`
+- With docker: `make up`
     
  

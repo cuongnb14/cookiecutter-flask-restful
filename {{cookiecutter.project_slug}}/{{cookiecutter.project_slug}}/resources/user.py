@@ -4,6 +4,7 @@ from models.base import User
 from base.paginator import Paginator
 from base.utils import ok
 from tasks.celery import add_user
+from objects import db
 
 page_parser = reqparse.RequestParser()
 page_parser.add_argument('offset', type=str, required=False, help='{error_msg}')

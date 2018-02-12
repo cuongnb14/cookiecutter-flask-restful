@@ -1,8 +1,8 @@
 import logging
 from logging.config import dictConfig
-from flask import Flask
 from flask import got_request_exception
-from flask_sqlalchemy import SQLAlchemy
+
+from objects import app
 
 from configs.config import LOGGING
 from api import register_api

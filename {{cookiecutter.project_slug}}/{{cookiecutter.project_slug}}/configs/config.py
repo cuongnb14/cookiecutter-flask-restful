@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 
 env = os.getenv
 
@@ -17,6 +18,12 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 # ----------------------------------------------------------
 CELERY_BROKER_URL = env('CELERY_BROKER_URL', 'redis://localhost:6378')
 CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND', 'redis://localhost:6378')
+
+# Flask-JWT-Extended CONFIG
+# ----------------------------------------------------------
+# TODO: Change it
+JWT_SECRET_KEY = "10f414b8-1093-11e8-bb72-f48e38861a42"
+JWT_ACCESS_TOKEN_EXPIRES = timedelta(days=30)
 
 # LOGGING CONFIG
 # ----------------------------------------------------------

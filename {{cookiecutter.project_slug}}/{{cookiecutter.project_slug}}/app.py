@@ -1,6 +1,7 @@
 import logging
 from logging.config import dictConfig
 from flask import got_request_exception
+from flask_jwt_extended import JWTManager
 
 from objects import app
 
@@ -14,6 +15,8 @@ app.logger.info("Init flask app ...")
 dictConfig(LOGGING)
 request_logger = logging.getLogger("api.request")
 
+# Init JWT
+jwt = JWTManager(app)
 
 # Init API
 register_api(app)

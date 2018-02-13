@@ -24,3 +24,11 @@ def ok(data, paginator=None):
             "limit": paginator.limit,
         }
     return result
+
+
+def fail(message, http_code):
+    result = {
+        "status": "Error",
+        "message": message,
+    }
+    return result, http_code

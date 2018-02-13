@@ -11,6 +11,7 @@ DB_PASS = env('DB_PASS', '123456')
 DB_NAME = env('DB_NAME', '{{cookiecutter.project_slug}}')
 
 SQLALCHEMY_DATABASE_URI = "mysql://{}:{}@{}:{}/{}".format(DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME)
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 # CELERY CONFIG
 # ----------------------------------------------------------

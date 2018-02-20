@@ -10,6 +10,7 @@ from configs.config import LOGGING
 from api import register_api
 from cli import register_cli
 from middlewares import request_logging
+from admin import register_admin
 
 # Trick: call app.logger before config app.logger by dictConfig.
 app.logger.info("Init flask app ...")
@@ -30,6 +31,9 @@ register_cli(app)
 
 # Register middleware
 request_logging.register_middleware(app)
+
+# Register admin
+register_admin(app)
 
 
 def log_exception(sender, exception, **extra):

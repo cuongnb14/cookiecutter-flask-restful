@@ -3,6 +3,8 @@ from datetime import timedelta
 
 env = os.getenv
 
+SECRET_KEY = "ji8u14b8-j8i9-11e8-bb72-f48e38861a42"
+
 # MYSQL DATABASE CONFIG
 # ----------------------------------------------------------
 DB_HOST = env('DB_HOST', '127.0.0.1')

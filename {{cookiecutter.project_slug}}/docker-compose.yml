@@ -4,6 +4,7 @@ services:
 
   {{cookiecutter.project_slug}}:
     image: {{cookiecutter.project_slug}}:{{cookiecutter.version}}
+    build: .
     ports:
       - 5000:5000
     env_file: docker-env

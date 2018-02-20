@@ -2,6 +2,7 @@ import logging
 from logging.config import dictConfig
 from flask import got_request_exception
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 
 from objects import app
 
@@ -20,6 +21,9 @@ jwt = JWTManager(app)
 
 # Init API
 register_api(app)
+
+# Allow CORS
+CORS(app)
 
 # Register custom CLI
 register_cli(app)

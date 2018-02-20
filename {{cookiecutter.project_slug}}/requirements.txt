@@ -14,3 +14,4 @@ redis==2.10.6
 
 gunicorn==19.7.1
 
+flask-cors==3.0.3
